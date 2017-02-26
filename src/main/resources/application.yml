@@ -1,5 +1,6 @@
 #cupSize: B
 #age: 18
 #context: "cupSize: ${cupSize},age: ${age}"  #在属性配置中调用自己的属性spring:spring:
+spring:
   profiles:
-    active:
+    active: dev
