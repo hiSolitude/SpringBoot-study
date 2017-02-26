@@ -16,6 +16,9 @@ public class GirlController1 {
     @Autowired
     private GrilRepository grilRepository;
 
+    @Autowired
+    private GrilService grilService;
+
     /**
      * 获取数据库中全部的gril
      * */
@@ -70,5 +73,10 @@ public class GirlController1 {
     @GetMapping("/grils/age/{age}")
     public List<Gril> findByAge(@RequestParam("age") Integer age){
         return grilRepository.findByAge(age);
+    }
+
+    @PostMapping("/grils/two")
+    public void girlTwo(){
+        grilService.insertTwo();
     }
 }
