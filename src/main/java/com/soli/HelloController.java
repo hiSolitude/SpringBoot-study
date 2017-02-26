@@ -1,14 +1,12 @@
 package com.soli;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by solitude on 2017/2/17.
  */
-//@RestController
-@Controller
+@RestController
+//@Controller
 public class HelloController {
     //使用注解@value 将yml文件中的cupSize、age、context注入到属性中
     //在yml文件中无需书写该属性的类型，只需要在创建该属性时，书写是什么类型即可
@@ -22,14 +20,15 @@ public class HelloController {
     private String context;*/
 
     //helloSpringBoot
-    @RequestMapping(value = "/hello",method = RequestMethod.GET)
+    @RequestMapping(value = {"/hello","/hi"},method = RequestMethod.GET)
     public String say(){
         return "hello SpringBoot";
     }
 
-    @RequestMapping(value = "/index",method = RequestMethod.GET)
-    public String index(){
-        return "test";
+//    @RequestMapping(value = "/index",method = RequestMethod.GET)
+    @GetMapping(value="index")
+    public String index(@RequestParam(value = "id",required = false,defaultValue = "0") Integer id){
+        return "id:"+id;
     }
    /* //打印yml文件中的cupSize
     @RequestMapping(value = "/cupSize",method = RequestMethod.GET)
